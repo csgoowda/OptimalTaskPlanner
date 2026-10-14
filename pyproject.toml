@@ -1,0 +1,78 @@
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "optimal-task-planner"
+version = "0.2.0"
+description = "Optimal resource scheduling over a rolling horizon, powered by CP-SAT — equipment, staff, or both"
+readme = "README.md"
+requires-python = ">=3.12"
+license = { text = "MIT" }
+authors = [{ name = "Optimal Task Planner contributors" }]
+keywords = ["scheduling", "cp-sat", "or-tools", "resource-planning", "gantt", "planning"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Environment :: Web Environment",
+    "Intended Audience :: Science/Research",
+    "Intended Audience :: Other Audience",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+    "Topic :: Office/Business :: Scheduling",
+]
+dependencies = [
+    "fastapi>=0.110",
+    "uvicorn[standard]>=0.29",
+    "ortools>=9.9",
+    "pydantic>=2.6",
+    "holidays>=0.50",
+    "platformdirs>=4",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8",
+    "httpx>=0.27",
+    "ruff>=0.6",
+    "mypy>=1.11",
+    "pre-commit>=3.8",
+]
+
+[project.urls]
+Homepage = "https://github.com/Mavrikant/OptimalTaskPlanner"
+Repository = "https://github.com/Mavrikant/OptimalTaskPlanner"
+Changelog = "https://github.com/Mavrikant/OptimalTaskPlanner/blob/main/CHANGELOG.md"
+Issues = "https://github.com/Mavrikant/OptimalTaskPlanner/issues"
+
+[project.scripts]
+optimal-task-planner = "optimal_task_planner.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+optimal_task_planner = ["static/**/*"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "UP", "B", "SIM"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+
+[tool.mypy]
+python_version = "3.12"
+files = ["src/optimal_task_planner"]
+warn_unused_configs = true
+warn_redundant_casts = true
+warn_unused_ignores = true
+check_untyped_defs = true
