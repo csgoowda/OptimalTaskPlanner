@@ -215,3 +215,16 @@ conventions and commands. Cutting a release? See [RELEASING.md](RELEASING.md).
 ## License
 
 [MIT](LICENSE)
+
+
+## Attribution
+
+This project is a modified version of
+[Optimal Task Planner](https://github.com/Mavrikant/OptimalTaskPlanner).
+
+The original project is distributed under the MIT License.
+The original copyright and license notices are retained.
+
+This repository contains modifications and additional contributions
+made by Chethan Gowda S.
+
